@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "@nextui-org/react": "^2.6.10",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "name": "test-task",
+  "version": "1.0.0",
+  "description": "Test Task Repository - test-task 📋💻🖋️",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@iconify/react": "^5.1.0"
+  }
+}

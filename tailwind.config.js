@@ -8,9 +8,18 @@ module.exports = {
          ],
          theme: {
             extend: {
-              'custom-dark': '#171717',
+              colors: {
+              'custom-white': '#a1a1aa',
+              'custom-white-light': '#fff',
+              'custom-dark': '#1E1E1E',
+              'custom-grey': '#ff6efd',
               'custom-pink': '#FF1CF7',
               'custom-blue': '#00F0FF',
+              'custom-green': '#14ff52',
+              'custom-red': '#f41c1c',
+              'custom-sky-blue': '#0070f3',
+              }
+         
             },
           },
           darkMode: "class",

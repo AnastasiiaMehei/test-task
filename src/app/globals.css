@@ -6,10 +6,12 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+/* height: 100vh;   */
 }
 
 body {
-  background-color: #1E1E1E;
+  background-color: #171717;
   font-family: "Inter", sans-serif;
   color: #fff;
+  background-color: black;
 }

@@ -25,9 +25,10 @@ export default function Audio() {
     src='/animation/red.json'
     loop
     autoplay
-    style={{ width: '186px', height: '110px'}}
+    style={{ width: '185px', height: '176px'}}
   />
 </button>
+
 ) : (
   <button  
     className="mt-4 p-2 rounded-full relative" 

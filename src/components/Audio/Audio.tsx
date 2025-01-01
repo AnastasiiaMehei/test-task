@@ -1,54 +1,48 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { Player } from '@lottiefiles/react-lottie-player';
-import { AudioVisualizer } from 'react-audio-visualize';
-
-const lottieAnimationUrl = 'https://assets.lottiefiles.com/packages/lf20_5c1zrs.json';
+import { useState } from 'react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 export default function Audio() {
     const [isConversationActive, setIsConversationActive] = useState(false);
-    const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
-    const visualizerRef = useRef<HTMLCanvasElement>(null);
 
-    const toggleConversation = () => {
+    const handleConversationToggle = () => {
         setIsConversationActive(!isConversationActive);
     };
 
-    // Example function to set audioBlob, replace with actual logic
-    const handleAudioUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files && event.target.files[0]) {
-            setAudioBlob(event.target.files[0]);
-        }
-    };
-
     return (
-        <div className="bg-custom-dark h-[313px] w-[552px] p-4 rounded-[24px] bg-red flex flex-col items-center justify-center">
+        <div className="bg-custom-dark h-[313px] w-[552px] mb-[50px] p-4 rounded-[24px]  flex flex-col items-center justify-center">
             <h1 className="font-semibold text-xs text-white center flex justify-center">
-                {isConversationActive ? 'Finish a conversation with assistants' : 'Start a conversation with assistants'}
+                {isConversationActive ? 'Finish a conversation with assistants'  : 'Start a conversation with assistants'}
             </h1>
+            {isConversationActive ? (
+  <button  
+  className="mt-4 p-2 rounded-full relative" 
+  onClick={handleConversationToggle}
+>
+  <img src='/images/red.svg' alt="Voice" style={{position:"absolute"}}/>
+  <DotLottieReact
+    src='/animation/red.json'
+    loop
+    autoplay
+    style={{ width: '186px', height: '110px'}}
+  />
+</button>
+) : (
+  <button  
+    className="mt-4 p-2 rounded-full relative" 
+    onClick={handleConversationToggle}
+  >
+    <img src='/images/blue.svg' alt="Voice" style={{position:"absolute"}}/>
+    <DotLottieReact
+      src='/animation/blue.json'
+      loop
+      autoplay
+      style={{ width: '185px', height: '176px'}}
+    />
+  </button>
+)}
 
-            <button onClick={toggleConversation} className="mt-4">
-                {isConversationActive ? (
-                    <img src='/images/red.svg' alt="Voice" />
-                ) : (
-                    <img src='/images/blue.svg' alt="Voice" />
-                )}
-            </button>
-
-            <input type="file" accept="audio/*" onChange={handleAudioUpload} className="mt-4" />
-
-            {audioBlob && (
-                <AudioVisualizer
-                    ref={visualizerRef}
-                    blob={audioBlob}
-                    width={500}
-                    height={75}
-                    barWidth={1}
-                    gap={0}
-                    barColor={'#f76565'}
-                />
-            )}
         </div>
     );
 }

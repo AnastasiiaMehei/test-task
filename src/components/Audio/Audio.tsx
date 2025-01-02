@@ -27,7 +27,7 @@ export default function Audio() {
 
   // Ініціалізація WebSocket
   const initializeWebSocket = () => {
-    const ws = new WebSocket(WEBSOCKET_URL);
+    const ws = new WebSocket('ws://localhost:8080/ws');
 
     ws.onopen = () => {
       console.log('WebSocket connected');

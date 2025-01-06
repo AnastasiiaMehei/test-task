@@ -8,8 +8,9 @@ import styled from 'styled-components';
 const AudioVisualizer = dynamic(() => import('react-audio-visualize').then(mod => mod.AudioVisualizer), { ssr: false });
 
 const StyledVisualizer = styled.div`
-  margin-top: 20px;
+  margin-top: -428px;
 `;
+// margin-top: -372px;
 
 const WEBSOCKET_URL = 'ws://localhost:8080/ws';
 
@@ -47,10 +48,10 @@ export default function Audio() {
       }
     };
 
-    ws.onerror = (error) => {
-      console.error('WebSocket error:', error);
-      setError('Connection error');
-    };
+    // ws.onerror = (error) => {
+    //   console.error('WebSocket error:', error);
+    //   setError('Connection error');
+    // };
 
     ws.onclose = () => {
       console.log('WebSocket closed');
@@ -234,27 +235,27 @@ export default function Audio() {
       )}
       
       {/* Додаємо індикатор стану підключення */}
-      <div className="mt-4 text-white text-sm">
+      {/* <div className="mt-4 text-white text-sm">
         {webSocket?.readyState === WebSocket.OPEN ? (
           <span className="text-green-500">Connected</span>
         ) : (
           <span className="text-red-500">Disconnected</span>
         )}
-      </div>
+      </div> */}
 
       {/* Додаємо індикатор запису */}
-      {isRecording && (
+      {/* {isRecording && (
         <div className="mt-2 text-red-500 text-sm">
           Recording...
         </div>
-      )}
+      )} */}
 
       {/* Показуємо помилки */}
-      {error && (
+      {/* {error && (
         <div className="mt-2 text-red-500 text-sm">
           {error}
         </div>
-      )}
+      )} */}
     </div>
   );
 }

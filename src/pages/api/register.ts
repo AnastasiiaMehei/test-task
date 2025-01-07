@@ -2,7 +2,7 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { initMongoDB } from '../../db/initMongoDB'
-import User from '../../models/User'
+import User from '../../db/models/user'
 import bcrypt from 'bcryptjs'
 
 type Data = {

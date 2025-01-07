@@ -16,8 +16,7 @@ export default function Stock() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
-    const apiKey = 'Q4W42WL6L5Z1FHG9'; // Замініть на ваш API ключ
-
+    const apiKey = process.env.ALPHA_VANTAGE_API_KEY;
     const fetchStockData = async () => {
         setLoading(true);
         setError('');

@@ -5,6 +5,31 @@ const axios = require('axios');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const fastify = Fastify();
+
+const userSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: [true, 'Email обов\'язковий'],
+    unique: true,
+    lowercase: true,
+    trim: true,
+    validate: {
+      validator: function(email: string) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      },
+      message: 'Невірний формат email'
+    }
+  },
+  password: {
+    type: String,
+    required: [true, 'Пароль обов\'язковий'],
+    minlength: [6, 'Пароль повинен містити мінімум 6 символів']
+  }
+}, {
+  timestamps: true
+});
+
+const User = mongoose.models.User || mongoose.model('User', userSchema);
 fastify.register(fastifyWebsocket);
 fastify.get('/', (request, reply) => {
   return { message: 'Hello from the server!' };
@@ -32,7 +57,7 @@ fastify.post('/register', async (request, reply) => {
 
     // Валідація
     if (!email || !password) {
-      reply.code(400).send({ error: 'Email та пароль обов\'язкові' });
+      reply.code(400).send({ error: 'Email та пароль обовязкові' });
       return;
     }
 

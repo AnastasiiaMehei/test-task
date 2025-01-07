@@ -24,6 +24,7 @@
   },
   "name": "test-task",
   "version": "1.0.0",
+  "type": "module",
   "description": "Test Task Repository - test-task 📋💻🖋",
   "main": "index.js",
   "scripts": {
